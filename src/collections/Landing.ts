@@ -24,7 +24,7 @@ const Landing: CollectionConfig = {
       type: 'upload', // Поле для завантаження файлів
       relationTo: 'media', // Пов'язане з колекцією `Media`
       label: 'Зображення',
-      required: true,
+      required: false,
     },
   ],
 }
