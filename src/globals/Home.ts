@@ -24,7 +24,7 @@ const Home: GlobalConfig = {
       type: 'upload',
       label: 'Зображення',
       relationTo: 'media', // Пов'язуємо з колекцією `Media`
-      required: true,
+      required: false,
     },
   ],
 }

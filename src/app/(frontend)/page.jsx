@@ -1,15 +1,18 @@
-async function fetchHomeData() {
+export async function getStaticProps() {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/globals/home`
     );
     const homeData = await response.json();
-    console.log(homeData);
-    return homeData;
+  
+    return {
+      props: {
+        homeData,
+      },
+      revalidate: 60, // Оновлення кешу кожні 60 секунд
+    };
   }
   
-  const LandingPage = async () => {
-    const homeData = await fetchHomeData();
-  
+  const LandingPage = ({ homeData }) => {
     return (
       <div>
         <h1>{homeData.title}</h1>
