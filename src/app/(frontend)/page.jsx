@@ -2,6 +2,8 @@ import React from 'react';
 import '@/styles/base.scss';
 import { getPayload } from 'payload';
 import config from '@payload-config';
+import HeroSection from "@/app/(frontend)/components/HeroSection";
+import Image from 'next/image';
 
 // Initialize Payload CMS
 const payload = await getPayload({ config });
@@ -48,24 +50,8 @@ const LandingPage = async () => {
   return (
     <div>
       {/* Hero Section */}
-      <section>
-        <div className="_container">
-          <h1>{homeData.hero.title}</h1>
-          <h2>{homeData.hero.subtitle}</h2>
-          <p>{homeData.hero.content}</p>
-          {homeData.hero.image && (
-            <img src={homeData.hero.image.url} alt={homeData.hero.title} />
-          )}
-          <div className="advantages">
-            {homeData.hero.advantages?.map((advantage, index) => (
-              <div key={index} className="advantage">
-                <h3>{advantage.value}</h3>
-                <p>{advantage.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <HeroSection data={homeData.hero} />
+      
 
       {/* Services Section */}
       <section>
@@ -76,7 +62,7 @@ const LandingPage = async () => {
             {homeData.services.ourServices?.map((service, index) => (
               <div key={index} className="service-item">
                 {service.image && (
-                  <img src={service.image.url} alt={service.title} />
+                  <Image src={service.image.url} alt={service.title} width={186} height={186} />
                 )}
                 <h3>{service.title}</h3>
                 <p>{service.text}</p>
@@ -96,10 +82,7 @@ const LandingPage = async () => {
             {homeData.why.why_reasones?.map((reason, index) => (
               <div key={index} className="reason">
                 {reason.reasone_icon && (
-                  <img
-                    src={reason.reasone_icon.url}
-                    alt={reason.reasone_value}
-                  />
+                  <Image src={reason.reasone_icon.url} alt={reason.reasone_value} width={44} height={44} />
                 )}
                 <h3>{reason.reasone_value}</h3>
                 <p>{reason.reasone_text}</p>
