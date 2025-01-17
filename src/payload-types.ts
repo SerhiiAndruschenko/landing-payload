@@ -225,9 +225,40 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Home {
   id: number;
-  title: string;
-  content: string;
-  image?: (number | null) | Media;
+  hero: {
+    title: string;
+    subtitle: string;
+    content: string;
+    image?: (number | null) | Media;
+    advantages: {
+      value: string;
+      text: string;
+      id?: string | null;
+    }[];
+  };
+  services: {
+    title: string;
+    subtitle: string;
+    ourServices?:
+      | {
+          image?: (number | null) | Media;
+          title: string;
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  why: {
+    why_title: string;
+    why_subtitle: string;
+    why_content: string;
+    why_reasones: {
+      reasone_icon?: (number | null) | Media;
+      reasone_value: string;
+      reasone_text: string;
+      id?: string | null;
+    }[];
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -236,9 +267,50 @@ export interface Home {
  * via the `definition` "home_select".
  */
 export interface HomeSelect<T extends boolean = true> {
-  title?: T;
-  content?: T;
-  image?: T;
+  hero?:
+    | T
+    | {
+        title?: T;
+        subtitle?: T;
+        content?: T;
+        image?: T;
+        advantages?:
+          | T
+          | {
+              value?: T;
+              text?: T;
+              id?: T;
+            };
+      };
+  services?:
+    | T
+    | {
+        title?: T;
+        subtitle?: T;
+        ourServices?:
+          | T
+          | {
+              image?: T;
+              title?: T;
+              text?: T;
+              id?: T;
+            };
+      };
+  why?:
+    | T
+    | {
+        why_title?: T;
+        why_subtitle?: T;
+        why_content?: T;
+        why_reasones?:
+          | T
+          | {
+              reasone_icon?: T;
+              reasone_value?: T;
+              reasone_text?: T;
+              id?: T;
+            };
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

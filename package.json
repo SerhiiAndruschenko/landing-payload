@@ -25,13 +25,16 @@
     "axios": "^1.7.9",
     "cloudinary": "^2.5.1",
     "cross-env": "^7.0.3",
+    "formik": "^2.4.6",
     "graphql": "^16.8.1",
     "next": "15.1.0",
     "payload": "latest",
     "payload-cloudinary-plugin": "^0.1.14",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "sharp": "0.32.6"
+    "sass": "^1.83.4",
+    "sharp": "0.32.6",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
