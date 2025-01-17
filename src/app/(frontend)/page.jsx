@@ -1,21 +1,27 @@
-import React from 'react';
+import React from 'react'
+import { getPayload } from 'payload'
+import config from '@payload-config'
 
-async function fetchHomeData() {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/globals/home`,
-    { cache: 'force-cache' } // Опція для завжди актуальних даних
-  );
-
-  if (!response.ok) {
-    throw new Error('Failed to fetch home data');
-  }
-
-  const homeData = await response.json();
-  return homeData;
-}
+const payload = await getPayload({ config })
 
 const LandingPage = async () => {
-  const homeData = await fetchHomeData();
+  let homeData
+
+  try {
+    // Use Payload's server-side function to fetch the global data
+    const result = await payload.findGlobal({
+      slug: 'home',
+      depth: 1,
+      locale: 'en',
+      fallbackLocale: false,
+      overrideAccess: false,
+      showHiddenFields: true,
+    })
+    homeData = result
+  } catch (error) {
+    console.error('Failed to fetch home data:', error)
+    homeData = { title: 'Error', content: 'Unable to load content.' }
+  }
 
   return (
     <div>
@@ -23,7 +29,7 @@ const LandingPage = async () => {
       <p>{homeData.content}</p>
       {homeData.image && <img src={homeData.image.url} alt={homeData.title} />}
     </div>
-  );
-};
+  )
+}
 
-export default LandingPage;
+export default LandingPage
