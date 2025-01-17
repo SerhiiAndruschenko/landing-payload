@@ -3,7 +3,7 @@ import React from 'react';
 async function fetchHomeData() {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/globals/home`,
-    { cache: 'no-store' } // Опція для завжди актуальних даних
+    { cache: 'force-cache' } // Опція для завжди актуальних даних
   );
 
   if (!response.ok) {
