@@ -227,7 +227,7 @@ export interface Home {
   id: number;
   title: string;
   content: string;
-  image: number | Media;
+  image?: (number | null) | Media;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
