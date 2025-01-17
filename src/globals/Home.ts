@@ -1,11 +1,10 @@
 import type { GlobalConfig } from 'payload'
-import axios from 'axios'
 
 const Home: GlobalConfig = {
   slug: 'home',
   label: 'Головна сторінка',
   access: {
-    read: () => true,
+    read: () => true, // Дозволяє читання всім
   },
   fields: [
     {
@@ -24,31 +23,10 @@ const Home: GlobalConfig = {
       name: 'image',
       type: 'upload',
       label: 'Зображення',
-      relationTo: 'media',
+      relationTo: 'media', // Пов'язуємо з колекцією `Media`
       required: false,
     },
   ],
-  hooks: {
-    afterChange: [
-      async () => {
-        try {
-          const vercelToken = process.env.VERCEL_TOKEN
-          const vercelProject = process.env.VERCEL_PROJECT
-
-          const url = `https://api.vercel.com/v1/projects/${vercelProject}/cache`
-          await axios.delete(url, {
-            headers: {
-              Authorization: `Bearer ${vercelToken}`,
-            },
-          })
-
-          console.log(`Cache for project ${vercelProject} cleared successfully.`)
-        } catch (error) {
-          console.error('Error clearing Vercel cache:', error)
-        }
-      },
-    ],
-  },
 }
 
 export default Home
