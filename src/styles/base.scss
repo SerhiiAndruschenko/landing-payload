@@ -224,6 +224,22 @@ body {
   }
 }
 
+@keyframes fadeCycle {
+  0% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+
+.animated-fade {
+  animation: fadeCycle 2s infinite; /* Тривалість 3 секунди, анімація повторюється безкінечно */
+}
+
 .green-button {
   background: #a1ff07;
   border: 1px solid #a1ff07;

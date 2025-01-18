@@ -32,7 +32,7 @@ const PageHeader = () => {
       <div className="_container">
         <div className="col">
           <Link href="/">
-            <img src="/images/logo.svg" />
+            <img src="/images/logo.svg" alt='logo' />
           </Link>
           <nav>
             <Link href="#services">Services</Link>

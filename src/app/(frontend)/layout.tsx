@@ -2,6 +2,7 @@ import { Manrope } from 'next/font/google'
 import localFont from 'next/font/local'
 import PageHeader from '@/app/(frontend)/components/PageHeader'
 import Footer from '@/app/(frontend)/components/Footer'
+import Preloader from '@/app/(frontend)/components/Preloader'
 
 export const metadata = {
   title: 'Setorix',
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={manrope.className}>
+        <Preloader />
         <PageHeader />
         {children}
         <Footer />

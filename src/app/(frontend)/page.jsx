@@ -56,11 +56,11 @@ const LandingPage = async () => {
       {/* Services Section */}
       <section>
         <div className="_container">
-          <h1>{homeData.services.title}</h1>
-          <h2>{homeData.services.subtitle}</h2>
+          <h1 className='fadeInUp'>{homeData.services.title}</h1>
+          <h2 className='fadeInUp'>{homeData.services.subtitle}</h2>
           <div className="our-services">
             {homeData.services.ourServices?.map((service, index) => (
-              <div key={index} className="service-item">
+              <div key={index} className="service-item fadeInUp">
                 {service.image && (
                   <Image src={service.image.url} alt={service.title} width={186} height={186} />
                 )}
