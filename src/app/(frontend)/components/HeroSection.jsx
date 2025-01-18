@@ -1,17 +1,29 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 const HeroSection = ({ data }) => {
   return (
-    <section>
+    <section className="hero">
       <div className="_container">
-        <h1>{data.title}</h1>
-        <h2>{data.subtitle}</h2>
-        <p>{data.content}</p>
-        {data.image && (
-            <Image src={data.image.url} alt={data.title} width={420} height={420} />
-        )}
-        <div className="advantages">
+        <div className="hero__body">
+          <div>
+            <h2>{data.subtitle}</h2>
+            <h1>{data.title}</h1>
+            <p>{data.content}</p>
+            <div className="buttons">
+              <Link href="#" className="green-button">
+                Order an audit
+              </Link>
+              <Link href="#services" className="outlined-button">
+                More about services
+              </Link>
+            </div>
+          </div>
+          {data.image && <Image src={data.image.url} alt={data.title} width={420} height={420} />}
+        </div>
+
+        <div className="hero__advantages">
           {data.advantages?.map((advantage, index) => (
             <div key={index} className="advantage">
               <h3>{advantage.value}</h3>

@@ -1,4 +1,5 @@
 import { Manrope } from 'next/font/google'
+import localFont from 'next/font/local'
 import PageHeader from '@/app/(frontend)/components/PageHeader'
 import Footer from '@/app/(frontend)/components/Footer'
 
@@ -6,6 +7,22 @@ export const metadata = {
   title: 'Setorix',
   description: '',
 }
+
+const benzin = localFont({
+  src: [
+    {
+      path: './fonts/benzin-medium.ttf',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: './fonts/benzin-semibold.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  display: 'swap',
+})
 
 const manrope = Manrope({ subsets: ['latin'] })
 
